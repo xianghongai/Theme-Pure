@@ -1,0 +1,1459 @@
+[
+
+  //
+  // EMPTY WINDOW BACKGROUND
+  // Sublime Text 3 never visible
+  // 在 Pure.sublime-theme 修改 `<key>background</key>`
+
+  // Rule, 规则对象 (class, settings, parents, platforms)
+  // Attributes, 字符串数组, "hover", "pressed", "dirty"
+  // Settings, 字符串数组，用户可配置
+  // Properties, 设置 UI 元素的样式，每个元素支持 layer0.* (最底层), layer1.*, layer2.*, layer3.*, hit_test_level (点击)
+  //    - layer#.opacity, 控制图层不透明度, 0.0 to 1.0
+  //    - layer#.tint, 填充颜色
+  //    - layer#.texture, PNG 图像路径, "Theme - Default/arrow_right.png"
+  //    - layer#.inner_margin, 点九，拉伸图像，绘制切片
+  //    - layer#.draw_center, 是否以点九中心绘制, false
+  //    - layer#.repeat, 重复，不拉伸, false
+  // Platforms, 字符串, 指定操作系统, osx, windows, linux
+
+
+  //
+  // EMPTY WINDOW BACKGROUND
+  //
+    {
+      "class": "sheet_container_control", //
+      "layer0.tint": [250, 250, 250], // RGB
+      "layer0.opacity": 1
+    },
+
+  //
+  // GRID LAYOUT
+  // 窗口面板分割线
+  //
+    {
+      "class": "grid_layout_control",
+      "border_size": 0,
+      "border_color": [230, 230, 230]
+    },
+    {
+      "class": "grid_layout_control",
+      "settings": ["ui_separator"],
+      "border_size": 1
+    },
+
+  //
+  // TABS
+  //
+
+    // Tab set
+    // 选项卡‘栏’样式
+    {
+      "class": "tabset_control",
+      "layer0.texture": "",
+      "layer0.tint": [230, 230, 230],
+      "layer0.inner_margin": 0,
+      "layer0.opacity": 1,
+      "content_margin": 0,
+      "tab_overlap": 0,
+      "tab_width": 128,
+      "tab_min_width": 50,
+      "tab_height": 30,
+      "mouse_wheel_switch": false
+    },
+    {
+      "class": "tabset_control",
+      "settings": ["mouse_wheel_switches_tabs", "!enable_tab_scrolling"],
+      "mouse_wheel_switch": true
+    },
+    {
+      "class": "tabset_control",
+      "settings": ["ui_separator"],
+      "content_margin": [0, 0, 0, 0], // 左，上，右，下
+      "layer1.opacity": 1,
+      "layer1.texture": "Theme - Pure/assets/separator-bottom.png",
+      "layer1.tint": [230, 230, 230],
+      "layer1.inner_margin": [0, 0, 0, 0]
+    },
+    {
+      "class": "tabset_control",
+      "platforms": ["osx"],
+      "settings": ["ui_separator", "!ui_native_titlebar"],
+      "layer2.opacity": 1,
+      "layer2.texture": "Theme - Pure/assets/separator-top.png",
+      "layer2.tint": [230, 230, 230],
+      "layer2.inner_margin": [0, 0, 0, 0]
+    },
+
+    // Tab element
+    // 选项卡‘项’样式
+    {
+      "class": "tab_control",
+      // Background，选项卡 Title 默认背景
+      "layer0.tint": [220, 220, 220],
+      "layer0.opacity": 1,
+      "content_margin": [15, -2, 15, 0],
+      "hit_test_level": 0,
+      "max_margin_trim": 12,
+
+      // Top
+      "layer1.texture": "Theme - Pure/assets/separator-top.png",
+      "layer1.tint": [220, 220, 220],
+      "layer1.inner_margin": [0, 1, 0, 0],
+      "layer1.opacity": 0,
+
+      // Right
+      "layer2.texture": "Theme - Pure/assets/separator-right.png",
+      "layer2.tint": [208, 208, 208],
+      "layer2.inner_margin": [0, 0, 1, 0],
+      "layer2.opacity": 1,
+
+      // Bottom
+      "layer3.texture": "Theme - Pure/assets/separator-bottom.png",
+      "layer3.tint": [220, 220, 220],
+      "layer3.inner_margin": [0, 0, 0, 1],
+      "layer3.opacity": 0
+    },
+    // 分割模式
+    {
+      "class": "tab_control",
+      "settings": ["ui_separator"],
+      "layer1.opacity": 1,
+      "layer2.opacity": 1,
+      "layer3.opacity": 1
+    },
+
+    // Tab hover state
+    // 选项卡鼠标经过
+    {
+      "class": "tab_control",
+      "attributes": ["hover"],
+      "settings": ["!ui_separator"], // false
+      "layer3.tint": [188, 188, 188],
+      "layer3.opacity": 1
+    },
+    {
+      "class": "tab_control",
+      "attributes": ["hover"],
+      "settings": ["ui_separator"],
+      "layer0.tint": [255, 255, 255]
+    },
+
+    // Tab active state
+    // 选项卡激活
+    {
+      "class": "tab_control",
+      "attributes": ["selected"],
+      "settings": ["!ui_separator"],
+      "layer0.tint": [236, 236, 236], // 激活时背景
+      "layer3.tint": [126, 126, 126], // 激活时底线
+      "layer3.opacity": 1
+    },
+    {
+      "class": "tab_control",
+      "attributes": ["selected"],
+      "settings": ["ui_separator"],
+      "layer0.tint": [255, 255, 255]
+    },
+
+    // Selected current tab
+    // 当前已经激活的选项卡
+    {
+      "class": "tab_control",
+      "attributes": ["selected", "hover"],
+      "settings": ["!ui_separator"],
+      "layer3.opacity": 1
+    },
+    {
+      "class": "tab_control",
+      "attributes": ["hover", "selected"],
+      "settings": ["ui_separator"],
+      "layer0.tint": [255, 255, 255]
+    },
+
+    // Tab close state
+    // 关闭按钮
+    {
+      "class": "tab_control",
+      "settings": ["show_tab_close_buttons"],
+      "content_margin": [8, 0] // 第一个值应用于左侧、顶部, 第二个值应用于右侧、底部
+    },
+    // Tab dirty state (close button hidden)
+    // 未保存的
+    {
+      "class": "tab_control",
+      "settings": ["!show_tab_close_buttons"],
+      "attributes": ["dirty"],
+      "content_margin": [12, 3, 7, 3]
+    },
+
+  //
+  // TAB BUTTONS
+  // 选项卡按钮 (关闭、未保存)
+  //
+
+    // Tab close button
+    // 关闭按钮
+    {
+      "class": "tab_close_button",
+      "layer0.texture": "Theme - Pure/assets/close.png",
+      "layer0.opacity": 0.5,
+      "layer0.tint": [126, 126, 126]
+    },
+    {
+      "class": "tab_close_button",
+      "settings": ["show_tab_close_buttons"],
+      "content_margin": [8, 8]
+    },
+    {
+      "class": "tab_close_button",
+      "parents": [{
+        "class": "tab_control",
+        "attributes": ["hover"]
+      }],
+      "layer0.texture": "Theme - Pure/assets/close.png",
+      "layer0.opacity": 1
+    },
+    {
+      "class": "tab_close_button",
+      "parents": [{
+        "class": "tab_control"
+      }],
+      "attributes": ["hover"],
+      "layer0.opacity": 1,
+      "layer0.tint": [96, 96, 96]
+    },
+    {
+      "class": "tab_close_button",
+      "parents": [{
+        "class": "tab_control",
+        "attributes": ["selected"]
+      }],
+      "layer0.opacity": 1
+    },
+    // Tab dirty button
+    // 选项卡‘未保存’按钮
+    {
+      "class": "tab_close_button",
+      "parents": [{
+        "class": "tab_control",
+        "attributes": ["dirty"]
+      }],
+      "layer0.texture": "Theme - Pure/assets/circle.png",
+      "layer0.tint": [126, 126, 126],
+      "layer0.opacity": 1
+    },
+    {
+      "class": "tab_close_button",
+      "settings": ["!show_tab_close_buttons"],
+      "parents": [{
+        "class": "tab_control",
+        "attributes": ["dirty"]
+      }],
+      "content_margin": [8, 8],
+      "layer0.opacity": 1
+    },
+    {
+      "class": "tab_close_button",
+      "parents": [{
+        "class": "tab_control",
+        "attributes": ["dirty", "hover"]
+      }],
+      "layer0.texture": "Theme - Pure/assets/close.png",
+      "attributes": ["hover"],
+      "layer0.opacity": 1,
+      "layer0.tint": [96, 96, 96]
+    },
+    {
+      "class": "tab_close_button",
+      "parents": [{
+        "class": "tab_control",
+        "attributes": ["dirty", "selected"]
+      }]
+    },
+    // Tab highlight button
+    // 高亮指示状态
+    {
+      "class": "tab_close_button",
+      "settings": ["highlight_modified_tabs"],
+      "parents": [{
+        "class": "tab_control",
+        "attributes": ["dirty"]
+      }]
+    },
+    {
+      "class": "tab_close_button",
+      "settings": ["highlight_modified_tabs"],
+      "parents": [{
+        "class": "tab_control",
+        "attributes": ["dirty", "selected"]
+      }]
+    },
+    // Tab close button hover
+    {
+      "class": "tab_close_button",
+      "settings": ["show_tab_close_buttons"],
+      "attributes": ["hover"]
+    },
+    // Tab close button pressed
+    {
+      "class": "tab_close_button",
+      "settings": ["show_tab_close_buttons"],
+      "attributes": ["pressed"],
+      "layer0.opacity": 0.5
+    },
+
+  //
+  // TAB LABELS
+  // 选项卡文字
+  //
+    {
+      "class": "tab_label",
+      "fade": true,
+      "fg": [126, 126, 126]
+    },
+    {
+      "class": "tab_label",
+      "parents": [{
+        "class": "tab_control",
+        "attributes": ["hover"]
+      }],
+      "fg": [96, 96, 96],
+      "font.bold": false
+    },
+    {
+      "class": "tab_label",
+      "parents": [{
+        "class": "tab_control",
+        "attributes": ["selected"]
+      }],
+      "fg": [96, 96, 96],
+      "font.bold": false
+    },
+    {
+      "class": "tab_label",
+      "attributes": ["transient"],
+      "font.italic": true
+    },
+
+    // Tab Labels font size
+    {
+      "class": "tab_label",
+      "settings": ["pure_tabs_font_small"],
+      "font.size": 10
+    },
+    {
+      "class": "tab_label",
+      "settings": ["pure_tabs_font_normal"],
+      "font.size": 11
+    },
+    {
+      "class": "tab_label",
+      "settings": ["pure_tabs_font_large"],
+      "font.size": 12
+    },
+    {
+      "class": "tab_label",
+      "settings": ["pure_tabs_font_xlarge"],
+      "font.size": 14
+    },
+
+  //
+  // tab set scroll left | scroll right
+  // 选项卡‘左右’切换、下拉
+  //
+
+    {
+      "class": "scroll_tabs_left_button",
+      "content_margin": [0, 0],
+      "layer0.texture": "Theme - Pure/assets/arrow-left.png",
+      "layer0.tint": [126, 126, 126, 0],
+      "layer0.opacity": 0
+    },
+
+    {
+      "class": "scroll_tabs_left_button",
+      "attributes": ["hover"],
+      "layer0.tint": [96, 96, 96, 0]
+    },
+
+    {
+      "class": "scroll_tabs_right_button",
+      "content_margin": [0, 0],
+      "layer0.texture": "Theme - Pure/assets/arrow-right.png",
+      "layer0.tint": [126, 126, 126, 0],
+      "layer0.opacity": 0
+    },
+    {
+      "class": "scroll_tabs_right_button",
+      "attributes": ["hover"],
+      "layer0.tint": [96, 96, 96, 0]
+    },
+    {
+      "class": "scroll_tabs_right_button",
+      "settings": ["ui_separator"],
+      "layer2.texture": "Theme - Pure/assets/separator-right.png",
+      "layer2.tint": [126, 126, 126],
+      "layer2.opacity": 1,
+      "layer2.inner_margin": [0, 1, 2, 1]
+    },
+    {
+      "class": "show_tabs_dropdown_button",
+      "content_margin": [12, 12],
+      "layer0.texture": "Theme - Pure/assets/overflow-menu.png",
+      "layer0.tint": [126, 126, 126],
+      "layer0.opacity": 1,
+      "layer0.inner_margin": [0, 0]
+    },
+
+    {
+      "class": "show_tabs_dropdown_button",
+      "attributes": ["hover"],
+      "layer0.tint": [96, 96, 96]
+    },
+
+  //
+  // FOLD BUTTONS
+  // 折叠、展开
+  //
+    {
+      "class": "fold_button_control",
+      "layer0.texture": "Theme - Pure/assets/folder-closed.png",
+      "layer0.tint": [126, 126, 126],
+      "layer0.opacity": 0.6,
+      "layer0.inner_margin": 0,
+      "content_margin": [8, 8]
+    },
+    {
+      "class": "fold_button_control",
+      "attributes": ["hover"],
+      "layer0.opacity": 0.8
+    },
+    {
+      "class": "fold_button_control",
+      "attributes": ["expanded"],
+      "layer0.texture": "Theme - Pure/assets/folder-open.png"
+    },
+    {
+      "class": "fold_button_control",
+      "attributes": ["expanded", "hover"]
+    },
+
+  //
+  // STANDARD SCROLLBARS
+  // 滚动条
+  //
+
+    // Standard vertical scroll bar，垂直滚动条背景 (轨道)
+    {
+      "class": "scroll_bar_control",
+      "layer0.texture": "",
+      "layer0.tint": [220, 220, 220],
+      "layer0.opacity": 1,
+      "layer0.inner_margin": [0, 0],
+      "blur": true
+    },
+    // Standard horizontal scroll bar，水平滚动条背景
+    {
+      "class": "scroll_bar_control",
+      "attributes": ["horizontal"],
+      "layer0.texture": "",
+      "layer0.tint": [220, 220, 220],
+      "layer0.inner_margin": [0, 0],
+      "blur": true
+    },
+    // Standard scroll bar corner，同时显示垂直和水平滚动条时，右下角区域
+    {
+      "class": "scroll_corner_control",
+      "layer0.texture": "",
+      "layer0.tint": [200, 200, 200],
+      "layer0.inner_margin": [0, 0],
+      "layer0.opacity": 1
+    },
+    // Standard vertical scroll puck，滚动条 (手柄)
+    {
+      "class": "puck_control",
+      "layer0.texture": "",
+      "layer0.tint": [186, 186, 186],
+      "layer0.opacity": 1,
+      "layer0.inner_margin": [0, 0],
+      "content_margin": [4, 0], // 影响滚动条大小
+      "blur": false
+    },
+    // Standard horizontal scroll puck
+    {
+      "class": "puck_control",
+      "attributes": ["horizontal"],
+      // "layer0.texture": "",
+      "layer0.tint": [186, 186, 186], // 01
+      "layer0.inner_margin": [0, 0],
+      "content_margin": [0, 4], // 影响滚动条大小
+      "blur": false
+    },
+
+  //
+  // MINI MAP
+  //
+
+    {
+      "class": "minimap_control",
+      "viewport_color": [26, 26, 26, 0.1]
+    },
+
+  //
+  // LABELS
+  // 文本样式 (查找替换)
+  //
+
+    // General labels, 普通标签文本
+    {
+      "class": "label_control",
+      "color": [96, 96, 96]
+    },
+    // Text field labels
+    {
+      "class": "label_control",
+      "parents": [{
+        "class": "panel_control"
+      }]
+    },
+    // Button labels, 按钮式标签文本
+    {
+      "class": "label_control",
+      "parents": [{
+        "class": "button_control"
+      }],
+      "font.bold": true,
+      "color": [96, 96, 96]
+    },
+
+  //
+  // TOOLTIP
+  // 操作提示
+  //
+
+    // Tooltip container
+    {
+      "class": "tool_tip_control",
+      // "layer0.texture": "",
+      "layer0.tint": [236, 236, 236],
+      "layer0.inner_margin": [1, 1],
+      "layer0.opacity": 1,
+      "content_margin": [4, 4]
+    },
+    // Tooltip content
+    {
+      "class": "tool_tip_label_control",
+      "color": [96, 96, 96]
+    },
+
+  //
+  // STATUS BAR
+  // 状态栏
+  //
+
+    // Status bar container
+    // 状态栏背景
+    {
+      "class": "status_bar",
+      "layer0.texture": "",
+      "layer0.tint": [216, 216, 216],
+      "layer0.opacity": 1,
+      "content_margin": [0, 4]
+    },
+    // Status bar button
+    // 状态栏按钮
+    {
+      "class": "status_button",
+      "min_size": [88, 0]
+    },
+    // Status bar label
+    // 状态栏标签
+    {
+      "class": "label_control",
+      "parents": [{
+        "class": "status_bar"
+      }],
+      "color": [126, 126, 126]
+    },
+    // Status bar switch panel
+    // 状态栏开关
+    {
+      "class": "panel_button_control",
+      "layer0.texture": "Theme - Pure/assets/switch-panel.png",
+      "layer0.tint": [126, 126, 126],
+      "layer0.opacity": 1,
+      "layer0.inner_margin": 0,
+      "content_margin": [12, 8]
+    },
+    {
+      "class": "panel_button_control",
+      "attributes": ["hover"],
+      "layer0.tint": [220, 220, 220]
+    },
+    // Status container
+    // 状态栏面板
+    {
+      "class": "status_container",
+      "content_margin": [0, 2]
+    },
+
+  //
+  // SIDEBAR
+  // 侧边栏
+  //
+
+    // Sidebar container
+    {
+      "class": "sidebar_container",
+      // "layer0.texture": "",
+      "layer0.opacity": 1,
+      "layer0.tint": [230, 230, 230],
+      "layer0.inner_margin": [1, 5, 2, 1],
+      "content_margin": [0, 4, 0, 0]
+    },
+    // Sidebar tree
+    // 侧边栏树状态
+    {
+      "class": "sidebar_tree",
+      "row_padding": [8, 4],
+      "indent": 12,
+      "indent_offset": 14,
+      "indent_top_level": false,
+      "dark_content": false
+    },
+    // Sidebar rows, 侧边栏背景 (默认)
+    {
+      "class": "tree_row",
+      // "layer0.texture": "",
+      "layer0.tint": [200, 200, 200], // 影响已选择项背景
+      "layer0.opacity": 0,
+      "layer0.inner_margin": [1, 1]
+    },
+    // Sidebar row selected, 侧边栏背景 (已选择)
+    {
+      "class": "tree_row",
+      "attributes": ["selected"],
+      "layer0.opacity": 1
+    },
+    // Sidebar heading
+    {
+      "class": "sidebar_heading",
+      "color": [126, 126, 126],
+      "font.bold": true
+    },
+    // 侧边栏行间距，可配置
+    {
+      "class": "sidebar_tree",
+      "settings": ["pure_sidebar_tree_xsmall"],
+      "row_padding": [8, 0]
+    },
+    {
+      "class": "sidebar_tree",
+      "settings": ["pure_sidebar_tree_small"],
+      "row_padding": [8, 2]
+    },
+    {
+      "class": "sidebar_tree",
+      "settings": ["pure_sidebar_tree_normal"],
+      "row_padding": [8, 4]
+    },
+    {
+      "class": "sidebar_tree",
+      "settings": ["pure_sidebar_tree_large"],
+      "row_padding": [8, 6]
+    },
+    {
+      "class": "sidebar_tree",
+      "settings": ["pure_sidebar_tree_xlarge"],
+      "row_padding": [8, 8]
+    },
+    // Sidebar heading selected
+    {
+      "class": "sidebar_heading",
+      "parents": [{
+        "class": "tree_row",
+        "attributes": ["selected"]
+      }],
+      "shadow_offset": [0, 0]
+    },
+    // Sidebar entry, 侧边栏文字 (默认)
+    {
+      "class": "sidebar_label",
+      "color": [96, 96, 96]
+    },
+    // 侧边栏文字，可配置
+    {
+      "class": "sidebar_label",
+      "settings": ["pure_sidebar_font_small"],
+      "font.size": 10.0
+    },
+    {
+      "class": "sidebar_label",
+      "settings": ["pure_sidebar_font_normal"],
+      "font.size": 11.0
+    },
+    {
+      "class": "sidebar_label",
+      "settings": ["pure_sidebar_font_large"],
+      "font.size": 12.0
+    },
+    {
+      "class": "sidebar_label",
+      "settings": ["pure_sidebar_font_xlarge"],
+      "font.size": 14.0
+    },
+    // Sidebar folder entry
+    // 侧边栏目录
+    {
+      "class": "sidebar_label",
+      "parents": [{
+        "class": "tree_row",
+        "attributes": ["expandable"]
+      }],
+      "color": [76, 76, 76]
+    },
+    {
+      "class": "sidebar_label",
+      "parents": [{
+        "class": "tree_row",
+        "attributes": ["hover"]
+      }],
+      "color": [96, 96, 96]
+    },
+    {
+      "class": "sidebar_label",
+      "parents": [{
+        "class": "tree_row",
+        "attributes": ["expandable"]
+      }],
+      "settings": ["bold_folder_labels"],
+      "font.bold": false
+    },
+    // Sidebar entry selected, 已选择
+    {
+      "class": "sidebar_label",
+      "parents": [{
+        "class": "tree_row",
+        "attributes": ["selected"]
+      }],
+      "color": [56, 56, 56]
+    },
+
+  //
+  // SIDEBAR - OPEN FILE ICONS
+  // 目录 ICON
+  //
+
+    // Sidebar file close
+    {
+      "class": "close_button",
+      "layer0.texture": "Theme - Pure/assets/close.png",
+      "layer0.opacity": 0,
+      "layer0.inner_margin": 0,
+      "layer0.tint": [126, 126, 126],
+      "content_margin": [8, 8]
+    },
+    {
+      "class": "close_button",
+      "parents": [{
+        "class": "tree_row",
+        "attributes": ["selected"]
+      }],
+      "layer0.opacity": 1
+    },
+    {
+      "class": "close_button",
+      "parents": [{
+        "class": "tree_row",
+        "attributes": ["hover"]
+      }],
+      "layer0.opacity": 1
+    },
+    // Sidebar file dirty
+    {
+      "class": "close_button",
+      "attributes": ["dirty"],
+      "layer0.texture": "Theme - Pure/assets/circle.png",
+      "layer0.opacity": 1,
+      "layer0.tint": [96, 96, 96]
+    },
+    {
+      "class": "close_button",
+      "attributes": ["dirty"],
+      "parents": [{
+        "class": "tree_row",
+        "attributes": ["selected"]
+      }],
+      "layer0.texture": "Theme - Pure/assets/circle.png"
+    },
+    // Sidebar file close hover
+    {
+      "class": "close_button",
+      "attributes": ["hover"],
+      "layer0.tint": [220, 220, 220]
+    },
+    {
+      "class": "close_button",
+      "attributes": ["dirty", "hover"],
+      "parents": [{
+        "class": "tree_row",
+        "attributes": ["hover"]
+      }],
+      "layer0.texture": "Theme - Pure/assets/close.png",
+      "layer0.tint": [220, 220, 220]
+    },
+
+  //
+  // SIDEBAR - GENERAL FILE ICONS
+  //
+
+    // Sidebar group closed
+    {
+      "class": "disclosure_button_control",
+      "content_margin": [8, 8],
+      "layer0.texture": "Theme - Pure/assets/folder-closed.png",
+      "layer0.tint": [126, 126, 126],
+      "layer0.opacity": 1,
+      "layer0.inner_margin": 0
+    },
+    {
+      "class": "disclosure_button_control",
+      "parents": [{
+        "class": "tree_row",
+        "attributes": ["hover"]
+      }],
+      "layer0.tint": [96, 96, 96]
+    },
+    {
+      "class": "disclosure_button_control",
+      "parents": [{
+        "class": "tree_row",
+        "attributes": ["selected"]
+      }]
+    },
+    // Sidebar group open
+    {
+      "class": "disclosure_button_control",
+      "attributes": ["expanded"],
+      "layer0.texture": "Theme - Pure/assets/folder-open.png"
+    },
+    {
+      "class": "disclosure_button_control",
+      "attributes": ["expanded"],
+      "parents": [{
+        "class": "tree_row",
+        "attributes": ["hover"]
+      }]
+    },
+    {
+      "class": "disclosure_button_control",
+      "attributes": ["expanded"],
+      "parents": [{
+        "class": "tree_row",
+        "attributes": ["selected"]
+      }],
+      "layer0.texture": "Theme - Pure/assets/folder-open.png"
+    },
+
+    // TODO: Symlink folder icon
+    {
+      "class": "icon_folder_dup",
+      "content_margin": [9, 9],
+      "layer0.texture": "Theme - Pure/assets/folder-closed.png",
+      "layer0.tint": [126, 126, 126],
+      "layer0.opacity": 1,
+
+      "layer1.texture": "Theme - Pure/assets/folder-open.png",
+      "layer1.tint": [126, 126, 126],
+      "layer1.opacity": 0.3
+    },
+    {
+      "class": "icon_folder_dup",
+      "parents": [{
+        "class": "tree_row",
+        "attributes": ["hover"]
+      }],
+      "layer0.tint": [216, 216, 216]
+    },
+    {
+      "class": "icon_folder_dup",
+      "parents": [{
+        "class": "tree_row",
+        "attributes": ["expanded"]
+      }],
+      "layer0.tint": [216, 216, 216]
+    },
+
+    //
+    // FIX ICON BUG BY REMOVING THEM
+    //
+
+    {
+      "class": "icon_file_type",
+      "content_margin": [0, 0],
+      "layer0.opacity": 0
+    },
+    {
+      "class": "icon_folder",
+      "layer0.texture": "",
+      "layer0.opacity": 0,
+      "content_margin": [0, 0]
+    },
+    {
+      "class": "icon_folder_loading",
+      "content_margin": [0, 0],
+      "layer0.opacity": 0
+    },
+
+  //
+  // STANDARD TEXT BUTTONS
+  // ‘查找、替换’ 按钮背景
+  //
+    // Default button state
+    // 按钮默认状态
+    {
+      "class": "button_control",
+      "content_margin": [4, 10, 4, 10],
+      "min_size": [64, 0],
+      "layer0.texture": "Theme - Pure/assets/input-bg.png",
+      "layer0.opacity": 1,
+      "layer0.tint": [200, 200, 200],
+      "layer0.inner_margin": [8, 8]
+    },
+    // Hover button state
+    // 按钮鼠标经过
+    {
+      "class": "button_control",
+      "attributes": ["hover"],
+      // "layer0.texture": "",
+      "layer0.tint": [196, 196, 196]
+    },
+    // Pressed button state
+    // 按钮按下状态
+    {
+      "class": "button_control",
+      "attributes": ["pressed"],
+      // "layer0.texture": "",
+      "layer0.tint": [196, 196, 196]
+    },
+
+  //
+  // TEXT INPUT FIELD
+  // 输入框
+  //
+    /*
+      // Text input field item
+      {
+        "class": "text_line_control",
+        "layer0.texture": "",
+        "layer0.tint": [230, 230, 230],
+        "layer0.opacity": 1,
+        "content_margin": 3
+      },
+    */
+    // Texline input
+    // ‘查找、替换、快速指令’面板输入框
+    {
+      "class": "text_line_control",
+      // 外一层边框
+      "layer0.texture": "Theme - Pure/assets/input-bg.png",
+      "layer0.opacity": 1,
+      "layer0.inner_margin": [10, 8],
+      "layer0.tint": [196, 196, 196],
+      // 再外一层边框
+      "layer1.texture": "Theme - Pure/assets/input-border.png",
+      "layer1.opacity": 1,
+      "layer1.inner_margin": [8, 8],
+      "layer1.tint": [216, 216, 216],
+      "content_margin": [8, 7, 5, 7]
+    },
+    // Textline input inside overlay panels
+    // ‘快速指令’面板输入框边框
+    {
+      "class": "text_line_control",
+      "parents": [{
+        "class": "overlay_control"
+      }],
+      "layer0.texture": "",
+      "layer0.opacity": 0,
+      "layer1.opacity": 1,
+      "layer1.texture": "",
+      "layer1.tint": [216, 216, 216],
+      "layer1.inner_margin": [8, 8],
+      "content_margin": [1, 1, 1, 1]
+    },
+
+  //
+  // PANEL BACKGROUNDS
+  // 面板背景 (查找、替换、快速指令)
+  //
+
+    // Bottom panel background
+    // ‘查找、替换’底部面板背景
+    {
+      "class": "panel_control",
+      "layer0.texture": "",
+      "layer0.inner_margin": [0, 0],
+      "layer0.opacity": 1,
+      "layer0.tint": [226, 226, 226],
+      "content_margin": 0
+    },
+
+    // Quick panel background
+    // ‘快速指令’面板背景
+    {
+      "class": "overlay_control",
+      "layer0.texture": "",
+      "layer0.inner_margin": [8, 2, 2, 10],
+      "layer0.opacity": 1,
+      "layer0.tint": [226, 226, 226],
+      // 影响快速指令面板边框大小
+      "content_margin": [2, 4, 2, 2]
+    },
+
+  //
+  // PROJECT MANAGER
+  // 项目管理
+  //
+
+    // Quick panel project setting (project manager)
+    {
+      "class": "quick_panel",
+      "layer0.texture": "",
+      "row_padding": [8, 6],
+      "layer0.tint": [236, 236, 236],
+      "layer0.opacity": 1,
+      "dark_content": true
+    },
+    // Quick panel style inside overlay_control (project manager)
+    {
+      "class": "quick_panel",
+      "layer0.texture": "",
+      "row_padding": [8, 6],
+      "parents": [{
+        "class": "overlay_control"
+      }],
+      "layer0.tint": [236, 236, 236],
+      "layer0.opacity": 1
+    },
+    // Quick Panel row default style (project manager)
+    {
+      "class": "quick_panel_row",
+      "layer0.texture": "",
+      "row_padding": [8, 6],
+      "layer0.tint": [236, 236, 236],
+      "layer0.inner_margin": 8,
+      "layer0.opacity": 1
+    },
+
+  //
+  // QUICK PANEL
+  // 快速指令面板
+  //
+
+    // Row quick Panel list item style (Ctrl+P 触发)
+    // 面板列表‘默认’背景
+    {
+      "class": "quick_panel_row",
+      "parents": [{
+        "class": "overlay_control"
+      }],
+      "layer0.tint": [236, 236, 236],
+      "layer0.opacity": 1
+    },
+    // Row quick selected list item style (Ctrl+P 触发)
+    // 面板列表‘选中’时背景
+    {
+      "class": "quick_panel_row",
+      "attributes": ["selected"],
+      "layer0.texture": "",
+      "layer0.tint": [196, 196, 196]
+    },
+    // Panel labels
+    // 标题文字样式
+    {
+      "class": "quick_panel_label",
+      "fg": [126, 126, 126], // 未选择、不匹配文本颜色
+      "match_fg": [96, 96, 96], // 未选择、匹配文本颜色
+      "selected_fg": [96, 96, 96], // 已选择、不匹配文本颜色
+      "selected_match_fg": [66, 66, 66] // 已选择、匹配文本颜色
+    },
+    // Panels sublabels
+    // 副标题文字样式
+    {
+      "class": "quick_panel_path_label",
+      "fg": [126, 126, 126],
+      "match_fg": [96, 96, 96],
+      "selected_fg": [96, 96, 96],
+      "selected_match_fg": [66, 66, 66]
+    },
+    // Panels data / score
+    {
+      "class": "quick_panel_score_label",
+      "fg": [126, 126, 126],
+      "selected_fg": [96, 96, 96]
+    },
+    // Command Panel list item style, (Ctrl+R, Ctrl+Shift+P/R 触发)
+    // 面板列表‘默认’背景
+    {
+      "class": "mini_quick_panel_row",
+      "layer0.texture": "",
+      "layer0.tint": [236, 236, 236],
+      "layer0.opacity": 1
+    },
+    // Command Panel selected list item style
+    // 面板列表‘选中’时背景
+    {
+      "class": "mini_quick_panel_row",
+      "attributes": ["selected"],
+      "layer0.texture": "",
+      "layer0.tint": [200, 200, 200]
+    },
+
+  //
+  // CODE COMPLETION DROPDOWN
+  // 代码补全弹出框
+  //
+    {
+      "class": "popup_control",
+      "content_margin": [0, 0],
+      "layer0.tint": [236, 236, 236], // 列表‘默认’背景
+      "layer0.opacity": 1
+    },
+    {
+      "class": "auto_complete",
+      "row_padding": [4, 4]
+    },
+    {
+      "class": "auto_complete_label",
+      "fg": [126, 126, 126],
+      "match_fg": [96, 96, 96],
+      "selected_fg": [96, 96, 96],
+      "selected_match_fg": [66, 66, 66]
+    },
+    {
+      "class": "table_row",
+      "layer0.texture": "",
+      "layer0.tint": [200, 200, 200], // 列表‘选中’时背景
+      "layer0.opacity": 0,
+      "layer0.inner_margin": [3, 1]
+    },
+    {
+      "class": "table_row",
+      "attributes": ["selected"],
+      "layer0.opacity": 1
+    },
+
+  //
+  // BOTTOM PANEL BUTTONS
+  // 底部面板按钮
+  //
+
+    // Button group middle
+    // 底部面板过滤按钮组
+    {
+      "class": "icon_button_control",
+      // "layer1.texture": "",
+      "layer1.opacity": 0,
+      "content_margin": 7
+    },
+    {
+      "class": "icon_button_control",
+      "attributes": ["selected"],
+      "layer0.opacity": 0
+    },
+    // Button group left
+    {
+      "class": "icon_button_control",
+      "attributes": ["left"]
+      // "layer0.texture": ""
+    },
+    // Button group left
+    {
+      "class": "icon_button_control",
+      "attributes": ["left"]
+      // "layer0.texture": ""
+    },
+    {
+      "class": "icon_button_control",
+      "attributes": ["left", "selected"]
+      // "layer0.texture": ""
+    },
+    // Button group right
+    {
+      "class": "icon_button_control",
+      "attributes": ["right"]
+      // "layer0.texture": ""
+    },
+    {
+      "class": "icon_button_control",
+      "attributes": ["right", "selected"]
+      // "layer0.texture": ""
+    },
+    // Button single
+    {
+      "class": "icon_button_control",
+      "attributes": ["left", "right"]
+      // "layer0.texture": ""
+    },
+    {
+      "class": "icon_button_control",
+      "attributes": ["left", "right", "selected"]
+      // "layer0.texture": ""
+    },
+
+  //
+  // BOTTOM PANEL ICONS - GROUP 1
+  // 组1：基本组3个按钮 (正则、大小写、全字)
+  //
+
+    // Regex search button
+    // 正则匹配条件按钮
+    {
+      "class": "icon_regex",
+      "layer0.texture": "Theme - Pure/assets/regex.png",
+      "layer0.tint": [166, 166, 166],
+      "layer0.opacity": 1,
+      "content_margin": 8
+
+    },
+    {
+      "class": "icon_regex",
+      "parents": [{
+        "class": "icon_button_control",
+        "attributes": ["selected"]
+      }],
+      "layer0.tint": [66, 66, 66]
+    },
+    // Case sensitive search button
+    // 大小写条件
+    {
+      "class": "icon_case",
+      "layer0.texture": "Theme - Pure/assets/casesens.png",
+      "layer0.tint": [166, 166, 166],
+      "layer0.opacity": 1,
+      "content_margin": 8
+    },
+    {
+      "class": "icon_case",
+      "parents": [{
+        "class": "icon_button_control",
+        "attributes": ["selected"]
+      }],
+      "layer0.tint": [66, 66, 66]
+    },
+    // Match whole word search button
+    // 全字匹配按钮
+    {
+      "class": "icon_whole_word",
+      "layer0.texture": "Theme - Pure/assets/wholeword.png",
+      "layer0.tint": [166, 166, 166],
+      "layer0.opacity": 1,
+      "content_margin": 8
+    },
+    {
+      "class": "icon_whole_word",
+      "parents": [{
+        "class": "icon_button_control",
+        "attributes": ["selected"]
+      }],
+      "layer0.tint": [66, 66, 66]
+    },
+
+  //
+  // BOTTOM PANEL ICONS - GROUP 1 (EXTENDED: FIND IN FILES)
+  // 组1扩展：在文件中查找面板 (Ctrl+Shift+F)
+  //
+
+    // Show search context button
+    // 在选择区域中查找按钮
+    {
+      "class": "icon_context",
+      "layer0.texture": "Theme - Pure/assets/context.png",
+      "layer0.tint": [166, 166, 166],
+      "layer0.opacity": 1,
+      "content_margin": 8
+    },
+    {
+      "class": "icon_context",
+      "parents": [{
+        "class": "icon_button_control",
+        "attributes": ["selected"]
+      }],
+      "layer0.tint": [66, 66, 66]
+    },
+    // Use search buffer
+    {
+      "class": "icon_use_buffer",
+      "layer0.texture": "Theme - Pure/assets/buffer.png",
+      "layer0.tint": [166, 166, 166],
+      "layer0.opacity": 1,
+      "content_margin": 8
+    },
+    {
+      "class": "icon_use_buffer",
+      "parents": [{
+        "class": "icon_button_control",
+        "attributes": ["selected"]
+      }],
+      "layer0.tint": [66, 66, 66]
+    },
+
+  //
+  // BOTTOM PANEL ICONS - GROUP 2
+  // 组2：查找/替换面板公用按钮
+  //
+
+    // Reverse search direction button (ST2 only)
+    {
+      "class": "icon_reverse",
+      "layer0.texture": "Theme - Pure/assets/reverse.png",
+      "layer0.tint": [166, 166, 166],
+      "layer0.opacity": 1,
+      "content_margin": 8
+    },
+    {
+      "class": "icon_reverse",
+      "parents": [{
+        "class": "icon_button_control",
+        "attributes": ["selected"]
+      }],
+      "layer0.tint": [66, 66, 66]
+    },
+    // Search wrap button
+    {
+      "class": "icon_wrap",
+      "layer0.texture": "Theme - Pure/assets/wrap.png",
+      "layer0.tint": [166, 166, 166],
+      "layer0.opacity": 1,
+      "content_margin": 8
+    },
+    {
+      "class": "icon_wrap",
+      "parents": [{
+        "class": "icon_button_control",
+        "attributes": ["selected"]
+      }],
+      "layer0.tint": [66, 66, 66]
+    },
+    // Search in selection button
+    {
+      "class": "icon_in_selection",
+      "layer0.texture": "Theme - Pure/assets/selection.png",
+      "layer0.tint": [166, 166, 166],
+      "layer0.opacity": 1,
+      "content_margin": 8
+    },
+    {
+      "class": "icon_in_selection",
+      "parents": [{
+        "class": "icon_button_control",
+        "attributes": ["selected"]
+      }],
+      "layer0.tint": [66, 66, 66]
+    },
+
+  //
+  // BOTTOM PANEL ICONS - GROUP 3
+  // 组3：替换按钮
+  //
+
+    // Preserve case button
+    {
+      "class": "icon_preserve_case",
+      "layer0.texture": "Theme - Pure/assets/lock.png",
+      "layer0.tint": [166, 166, 166],
+      "layer0.opacity": 1,
+      "content_margin": 8
+    },
+    {
+      "class": "icon_preserve_case",
+      "parents": [{
+        "class": "icon_button_control",
+        "attributes": ["selected"]
+      }],
+      "layer0.tint": [66, 66, 66]
+    },
+
+  //
+  // BOTTOM PANEL ICONS - GROUP 4
+  // 组4：公用的高亮显示按钮
+  //
+
+    // Highlight results button
+    {
+      "class": "icon_highlight",
+      "layer0.texture": "Theme - Pure/assets/highlight.png",
+      "layer0.tint": [166, 166, 166],
+      "layer0.opacity": 1,
+      "content_margin": 8
+    },
+    {
+      "class": "icon_highlight",
+      "parents": [{
+        "class": "icon_button_control",
+        "attributes": ["selected"]
+      }],
+      "layer0.tint": [66, 66, 66]
+    },
+
+  //
+  // VCS STATUS BADGE
+  //
+
+    {
+      "class": "vcs_status_badge",
+      "attributes": ["modified"],
+      "layer0.tint": [232, 65, 24]
+    },
+
+    {
+      "class": "vcs_status_badge",
+      "attributes": ["untracked"],
+      "layer0.tint": [76, 209, 55]
+    },
+
+
+  //
+  // SIDEBAR FOLDER COLORING
+  //
+    {
+      "class": "disclosure_button_control",
+      "settings": ["pure_color_expanded_folder"],
+      "attributes": ["expanded"],
+      "layer0.tint": [126, 126, 126]
+    },
+
+  //
+  // TABS SIZING
+  //
+
+    // Tab set
+    {
+      "class": "tabset_control",
+      "settings": ["pure_tabs_auto_width"],
+      "tab_width": 0
+    },
+    {
+      "class": "tabset_control",
+      "settings": ["pure_tabs_small"],
+      "tab_height": 22
+    },
+    {
+      "class": "tabset_control",
+      "settings": ["pure_tabs_normal"],
+      "tab_height": 26
+    },
+    {
+      "class": "tabset_control",
+      "settings": ["pure_tabs_large"],
+      "tab_height": 34
+    },
+    {
+      "class": "tabset_control",
+      "settings": ["pure_tabs_xlarge"],
+      "tab_height": 40
+    }
+
+]

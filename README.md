@@ -2,13 +2,12 @@
 
 #### A Sublime Text 3 UI Theme
 
-Basic Monokai & Spacegray & ayu.
 
 ## Screenshots
 
-![screenshots 1](https://raw.githubusercontent.com/xianghongai/Theme-Pure/master/screenshots/2018-02-12_02-44-23.png)
+![Dark](https://raw.githubusercontent.com/xianghongai/Theme-Pure/master/screenshots/Dark.png)
 
-![screenshots 2](https://raw.githubusercontent.com/xianghongai/Theme-Pure/master/screenshots/2018-02-12_02-45-04.png)
+![Light](https://raw.githubusercontent.com/xianghongai/Theme-Pure/master/screenshots/Light.png)
 
 
 ## How to Install
@@ -20,6 +19,8 @@ Basic Monokai & Spacegray & ayu.
 2. `Package Control: Install Package`
 
 3. `Theme-Pure`
+
+4. Install [AFileIcon](https://github.com/SublimeText/AFileIcon) [release.zip](https://github.com/SublimeText/AFileIcon/archive/master.zip)
 
 
 #### manually
@@ -36,16 +37,47 @@ Basic Monokai & Spacegray & ayu.
 via User Preferences file (Sublime Text -> `Preferences` -> `Settings` - `User`).
 
 ```
-"theme": "Pure.sublime-theme",
-"pure_sidebar_font_large": true,
-"pure_sidebar_tree_normal": true,
-"pure_tabs_font_large": true,
-"indent_guide_options": [ "draw_normal", "draw_active" ],
+"theme": "Pure Dark.sublime-theme",
+"color_scheme": "Packages/Theme - Pure/Pure Dark.tmTheme",
 ```
 
-- Install [AFileIcon](https://github.com/SublimeText/AFileIcon) [release.zip](https://github.com/SublimeText/AFileIcon/archive/master.zip)
+or
+
+
+```
+"theme": "Pure Light.sublime-theme",
+"color_scheme": "Packages/Theme - Pure/Pure Light.tmTheme",
+```
 
 After setting up, **restart Sublime Text** Editor for changes to take effect.
+
+---
+
+## Configurable
+
+```
+"pure_sidebar_tree_xsmall", 
+"pure_sidebar_tree_small", 
+"pure_sidebar_tree_normal", 
+"pure_sidebar_tree_large", 
+"pure_sidebar_tree_xlarge", 
+
+"pure_sidebar_font_small", 
+"pure_sidebar_font_normal", 
+"pure_sidebar_font_large", 
+"pure_sidebar_font_xlarge", 
+
+"pure_tabs_auto_width", 
+"pure_tabs_small", 
+"pure_tabs_normal", 
+"pure_tabs_large", 
+"pure_tabs_xlarge", 
+
+"pure_tabs_font_small", 
+"pure_tabs_font_normal", 
+"pure_tabs_font_large", 
+"pure_tabs_font_xlarge", 
+```
 
 ---
 
@@ -59,4 +91,4 @@ After setting up, **restart Sublime Text** Editor for changes to take effect.
 
 MIT License
 
-Copyright (c) 2018 XiangHongAi@gmail.com
+Copyright (c) 9999 XiangHongAi@gmail.com
