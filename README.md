@@ -1,7 +1,18 @@
-# Pure Theme
+<p>
+  <h1 align="center">Pure Theme (Sublime Text 3 UI Theme)</h1>
+</p>
 
-#### A Sublime Text 3 UI Theme
-
+<p align="center">
+  <a href="https://github.com/xianghongai/Theme-Pure">
+    <img src="https://img.shields.io/github/repo-size/xianghongai/Theme-Pure?style=plastic&color=4ac51c">
+  </a>
+  <a href="https://packagecontrol.io/packages/Theme%20-%20Pure">
+    <img src="https://img.shields.io/packagecontrol/dt/Theme%20-%20Pure">
+  </a>
+  <a href="https://packagecontrol.io/packages/Theme%20-%20Pure">
+    <img src="https://img.shields.io/github/license/xianghongai/Theme-Pure?maxAge=2592000&style=plastic&color=4ac51c">
+  </a>
+</p>
 
 ## Screenshots
 
@@ -99,6 +110,8 @@ After setting up, **restart Sublime Text** Editor for changes to take effect.
 The comment description is in the `Pure Dark.sublime-theme` file.
 
 ---
+
+## License
 
 MIT License
 
